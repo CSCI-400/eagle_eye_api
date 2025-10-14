@@ -1,0 +1,29 @@
+{
+  "name": "eagle_eye_api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "^7.16.0",
+    "axios": "^1.10.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "fetch": "^1.1.0",
+    "firebase-admin": "^13.3.0",
+    "google-auth-library": "^10.1.0",
+    "http": "^0.0.1-security",
+    "multer": "^2.0.1",
+    "nodemon": "^3.1.9",
+    "supertest": "^7.1.1",
+    "uuid": "^11.1.0",
+    "zod": "^3.24.3"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
