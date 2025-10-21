@@ -31,7 +31,7 @@ async function updateEvent(req,res){
         const eventId = req.params.id
         const updates = req.body
 
-        const updatedEvent = await eventService.editEvent(eventId, updates)
+        const updatedEvent = await eventService.updateEvent(eventId, updates)
         res.status(200).json(updatedEvent)
     }catch(error){
         console.error('Error updating event', error)
