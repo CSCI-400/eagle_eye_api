@@ -1,7 +1,7 @@
 require("dotenv").config({ path: '.env' });
 const admin = require('firebase-admin');
 
-const serviceAccount = require('./eagleeye-e31ac-firebase-adminsdk-fbsvc-bef12620a9.json');
+const serviceAccount = require('./eagleeye-e31ac-firebase-adminsdk-fbsvc-577e87426d.json');
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),

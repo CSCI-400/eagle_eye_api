@@ -18,7 +18,7 @@ app.get('/', (_req, res) => {
 });
 
 app.use('/users', require('./src/routers/userRouter'));
-
+app.use('/events', require('./src/routers/eventRouter'));
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
