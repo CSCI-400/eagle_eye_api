@@ -1,0 +1,46 @@
+# Settings for Backend (on Cloud Run).
+# See https://firebase.google.com/docs/app-hosting/configure#cloud-run
+runConfig:
+  minInstances: 0
+  # maxInstances: 100
+  # concurrency: 80
+  # cpu: 1
+  # memoryMiB: 512
+
+# Environment variables and secrets.
+# env:
+  # Configure environment variables.
+  # See https://firebase.google.com/docs/app-hosting/configure#user-defined-environment
+  # - variable: MESSAGE
+  #   value: Hello world!
+  #   availability:
+  #     - BUILD
+  #     - RUNTIME
+
+  # Grant access to secrets in Cloud Secret Manager.
+  # See https://firebase.google.com/docs/app-hosting/configure#secret-parameters
+  # - variable: MY_SECRET
+  #   secret: mySecretRef
+
+# Example configuration for environment variables and secrets.
+# NOTE: Do NOT commit real secrets or .env files to source control. Use Secret Manager for production.
+env:
+  # Plain environment variables available at build and/or runtime.
+  - variable: NODE_ENV
+    value: production
+    availability:
+      - RUNTIME
+
+  - variable: API_URL
+    value: https://api.example.com
+    availability:
+      - RUNTIME
+
+  # Example of mapping a Secret Manager secret to an env var. Replace `projects/PROJECT_ID/secrets/SECRET/versions/1`
+  # with your secret resource or use the `secret:` short ref after creating a secret in the same project.
+  - variable: FIREBASE_SERVICE_ACCOUNT
+    availability:
+      - RUNTIME
+
+# For local development you can continue using a local `.env` file and the `dotenv` package.
+# Make sure `.env` and any service account JSON are listed in `.gitignore`.

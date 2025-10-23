@@ -1,3 +1,14 @@
 .env
 /node_modules
-/src/enviroment/firebase/eagleeye-e31ac-firebase-adminsdk-fbsvc-bef12620a9.json
+
+# Local Firebase service account credentials (do NOT commit)
+src/enviroment/firebase/eagleeye-e31ac-firebase-adminsdk-fbsvc-bef12620a9.json
+src/enviroment/firebase/*.json
+
+# Logs
+npm-debug.log*
+firebase-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
