@@ -31,16 +31,5 @@ env:
     availability:
       - RUNTIME
 
-  - variable: API_URL
-    value: https://api.example.com
-    availability:
-      - RUNTIME
-
-  # Example of mapping a Secret Manager secret to an env var. Replace `projects/PROJECT_ID/secrets/SECRET/versions/1`
-  # with your secret resource or use the `secret:` short ref after creating a secret in the same project.
-  - variable: FIREBASE_SERVICE_ACCOUNT
-    availability:
-      - RUNTIME
-
 # For local development you can continue using a local `.env` file and the `dotenv` package.
 # Make sure `.env` and any service account JSON are listed in `.gitignore`.
