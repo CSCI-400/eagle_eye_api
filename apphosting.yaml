@@ -22,24 +22,26 @@ runConfig:
   # - variable: MY_SECRET
   #   secret: mySecretRef
 
-# Example configuration for environment variables and secrets.
-# NOTE: Do NOT commit real secrets or .env files to source control. Use Secret Manager for production.
+# Environment variables and secrets configuration
+# NOTE: Secrets are stored in Google Cloud Secret Manager for security
 env:
-  # Plain environment variables available at build and/or runtime.
+  # Plain environment variable
   - variable: NODE_ENV
     value: production
     availability:
       - RUNTIME
   
+  # Firebase API Key from Secret Manager
+  - variable: FIREBASE_API_KEY
+    secret: FIREBASE_API_KEY
+    availability:
+      - RUNTIME
+  
   # Firebase Service Account JSON from Secret Manager
-  # To set this up:
-  # 1. Create a secret in Google Cloud Secret Manager named 'firebase-service-account'
-  # 2. Store your service account JSON as the secret value
-  # 3. Uncomment the lines below
-  # - variable: FIREBASE_SERVICE_ACCOUNT
-  #   secret: firebase-service-account
-  #   availability:
-  #     - RUNTIME
+  - variable: FIREBASE_SERVICE_ACCOUNT
+    secret: FIREBASE_SERVICE_ACCOUNT
+    availability:
+      - RUNTIME
 
-# For local development you can continue using a local `.env` file and the `dotenv` package.
-# Make sure `.env` and any service account JSON are listed in `.gitignore`.
+# For local development, continue using the `.env` file with the `dotenv` package.
+# The `.env` file should be in `.gitignore` to prevent committing secrets.
