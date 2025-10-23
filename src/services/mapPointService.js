@@ -1,4 +1,4 @@
-const { db } = require('../environment/firebase/firebase');
+const { db } = require('../enviroment/firebase/firebase');
 const { validateMapPoint, collectionPath } = require('../models/mapPointModel');
 
 async function createMapPoint(data, user) {

@@ -30,6 +30,16 @@ env:
     value: production
     availability:
       - RUNTIME
+  
+  # Firebase Service Account JSON from Secret Manager
+  # To set this up:
+  # 1. Create a secret in Google Cloud Secret Manager named 'firebase-service-account'
+  # 2. Store your service account JSON as the secret value
+  # 3. Uncomment the lines below
+  # - variable: FIREBASE_SERVICE_ACCOUNT
+  #   secret: firebase-service-account
+  #   availability:
+  #     - RUNTIME
 
 # For local development you can continue using a local `.env` file and the `dotenv` package.
 # Make sure `.env` and any service account JSON are listed in `.gitignore`.
