@@ -47,7 +47,8 @@ app.get('/', (_req, res) => {
 
 app.use('/users', require('./src/routers/userRouter'));
 app.use('/events', require('./src/routers/eventRouter'));
-app.use('/map-points', require('./src/routers/mapPointRouter'));
+app.use('/path-points', require('./src/routers/pathPointRouter'));
+app.use('/locations', require('./src/routers/locationRouter'));
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {

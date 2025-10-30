@@ -1,4 +1,4 @@
-const mapPointService = require('../services/mapPointService');
+const locationService = require('../services/locationService');
 
 function errorResponse(res, status, message, code = null) {
   return res.status(status).json({
@@ -6,44 +6,43 @@ function errorResponse(res, status, message, code = null) {
   });
 }
 
-async function createMapPoint(req, res) {
+async function createLocation(req, res) {
   try {
     const body = {
       ...req.body,
       lat: typeof req.body.lat === 'string' ? Number(req.body.lat) : req.body.lat,
       lng: typeof req.body.lng === 'string' ? Number(req.body.lng) : req.body.lng,
     };
-    const result = await mapPointService.createMapPoint(body, req.user);
+    const result = await locationService.createLocation(body, req.user);
     res.status(201).json(result);
   } catch (err) {
-    console.error('Error creating map point:', err);
+    console.error('Error creating location:', err);
     errorResponse(res, 400, err.message);
   }
 }
 
-async function getMapPoint(req, res) {
+async function getLocation(req, res) {
   try {
-    const result = await mapPointService.getMapPointById(req.params.id);
+    const result = await locationService.getLocationById(req.params.id);
     res.json(result);
   } catch (err) {
-    console.error('Error getting map point:', err);
+    console.error('Error getting location:', err);
     errorResponse(res, 404, err.message);
   }
 }
 
-async function listMapPoints(req, res) {
+async function listLocations(req, res) {
   try {
     const bbox = req.query.bbox ? req.query.bbox.split(',').map(Number) : undefined;
-    const category = req.query.category || undefined;
-    const result = await mapPointService.listMapPoints({ bbox, category });
+    const result = await locationService.listLocations({ bbox });
     res.json(result);
   } catch (err) {
-    console.error('Error listing map points:', err);
+    console.error('Error listing locations:', err);
     errorResponse(res, 400, err.message);
   }
 }
 
-async function updateMapPoint(req, res) {
+async function updateLocation(req, res) {
   try {
     const body = {
       ...req.body,
@@ -60,28 +59,28 @@ async function updateMapPoint(req, res) {
             : req.body.lng
           : undefined,
     };
-    const result = await mapPointService.updateMapPoint(req.params.id, body);
+    const result = await locationService.updateLocation(req.params.id, body);
     res.json(result);
   } catch (err) {
-    console.error('Error updating map point:', err);
+    console.error('Error updating location:', err);
     errorResponse(res, 400, err.message);
   }
 }
 
-async function deleteMapPoint(req, res) {
+async function deleteLocation(req, res) {
   try {
-    const result = await mapPointService.deleteMapPoint(req.params.id);
+    const result = await locationService.deleteLocation(req.params.id);
     res.json(result);
   } catch (err) {
-    console.error('Error deleting map point:', err);
+    console.error('Error deleting location:', err);
     errorResponse(res, 400, err.message);
   }
 }
 
 module.exports = {
-  createMapPoint,
-  getMapPoint,
-  listMapPoints,
-  updateMapPoint,
-  deleteMapPoint,
+  createLocation,
+  getLocation,
+  listLocations,
+  updateLocation,
+  deleteLocation,
 };
