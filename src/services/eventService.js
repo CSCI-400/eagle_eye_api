@@ -24,6 +24,20 @@ async function updateEvent(eventId, eventData){
         return {id: eventId, ...validData}
 }
 
+async function getAllEvents(){
+    try{
+        const snapshot = await db.collection(collectionPath).get()
+        const events = []
+        snapshot.forEach(doc => {
+            events.push({id: doc.id, ...doc.data()})
+        })
+        return events
+    }catch(error){
+        console.log('Error getting all events', error)
+        throw error
+    }
+}
+
 async function deleteEvent(eventId){
     try{
         const eventRef = db.collection(collectionPath).doc(eventId)
@@ -40,4 +54,4 @@ async function deleteEvent(eventId){
     }
 }
 
-module.exports = {createEvent, getEvent, updateEvent, deleteEvent}
+module.exports = {createEvent, getEvent, getAllEvents, updateEvent, deleteEvent}

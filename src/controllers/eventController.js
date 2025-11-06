@@ -26,6 +26,16 @@ async function getEvent(req,res){
     }
 }
 
+async function getAllEvents(req,res){
+    try{
+        const result = await eventService.getAllEvents()
+        res.status(200).json(result)
+    }catch(error){
+        console.error('Error getting all events:', error)
+        errorResponse(res, 500, error.message)
+    }
+}
+
 async function updateEvent(req,res){
     try{
         const eventId = req.params.id
@@ -52,4 +62,4 @@ async function deleteEvent(req, res){
     }
 }
 
-module.exports = {createEvent, getEvent, updateEvent, deleteEvent}
+module.exports = {createEvent, getEvent, getAllEvents, updateEvent, deleteEvent}
